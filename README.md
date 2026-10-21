@@ -2,7 +2,9 @@
 A stock market dashboard built with python and Streamlit. It shows live stock data,technical analysis (like moving and RSI) and machine learning based price prediction.
 ##  About This project
 This is my customized version of an open- source project.
+
 -Forked and customized by **Shrishti Verma**
+
 -Original project by [ErikThiart](https://github.com/ErikThiart/ai-stock-dashboard)  (MIT License)
 
 
