@@ -12,7 +12,10 @@ This is my customized version of an open-source project.
 I am a B.tech CSE student.I choose this project to learn how a real world python project works:data fetching,charts,technical indicators,and a basic machine learning model.
 
 ##  What I changed 
-  Work in progress
+- Replace Us stocks with Indian stocks (NSE tickers with .NS)
+- Set Reliance as the default stocks
+- Showed price in rupees instead of dollars
+- 
 
 ##  Tech Used
 Python,streamlit,scikit-learn
