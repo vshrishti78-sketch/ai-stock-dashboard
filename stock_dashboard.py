@@ -282,9 +282,9 @@ class StockAnalyzer:
         # Market cap context
         market_cap = info.get('marketCap', 0)
         if market_cap:
-            if market_cap > 200e9:  # > 200B
+            if market_cap > 20e12:  # > ₹20 trillion
                 analysis.append("🏢 Large-cap stability with lower volatility expected")
-            elif market_cap > 10e9:  # > 10B
+            elif market_cap > 1e12:  # > ₹1 trillion
                 analysis.append("🏢 Mid-cap stock with balanced growth-stability profile")
             else:
                 analysis.append("🏢 Small-cap stock with higher growth potential and volatility")
@@ -476,9 +476,16 @@ def main():
     
     # Stock selection with popular choices
     popular_stocks = {
-        'Apple': 'AAPL', 'Microsoft': 'MSFT', 'Google': 'GOOGL', 
-        'Amazon': 'AMZN', 'Tesla': 'TSLA', 'NVIDIA': 'NVDA',
-        'Meta': 'META', 'Netflix': 'NFLX', 'AMD': 'AMD', 'Intel': 'INTC'
+        'Reliance Industries': 'RELIANCE.NS',
+        'TCS': 'TCS.NS',
+        'Infosys': 'INFY.NS',
+        'HDFC Bank': 'HDFCBANK.NS',
+        'ICICI Bank': 'ICICIBANK.NS',
+        'Wipro': 'WIPRO.NS',
+        'ITC': 'ITC.NS',
+        'State Bank of India': 'SBIN.NS',
+        'Larsen & Toubro': 'LT.NS',
+        'Bharti Airtel': 'BHARTIARTL.NS'
     }
     
     stock_choice = st.sidebar.selectbox(
@@ -488,7 +495,7 @@ def main():
     )
     
     if stock_choice == 'Custom':
-        symbol = st.sidebar.text_input("Enter Stock Symbol:", value="AAPL", max_chars=10).upper()
+        symbol = st.sidebar.text_input("Enter Stock Symbol:", value="RELIANCE.NS", max_chars=20).upper()
     else:
         symbol = popular_stocks[stock_choice]
     
@@ -523,7 +530,7 @@ def main():
     
     if data is None or data.empty:
         st.error(f"❌ Could not fetch data for {symbol}. Please verify the symbol and try again.")
-        st.info("💡 Try popular symbols like AAPL, MSFT, GOOGL, TSLA, etc.")
+        st.info("💡 Try Indian NSE symbols like RELIANCE.NS, TCS.NS, INFY.NS, or SBIN.NS.")
         return
     
     # Calculate technical indicators
@@ -544,7 +551,7 @@ def main():
     with col1:
         st.metric(
             label="💰 Current Price",
-            value=f"${latest_price:.2f}",
+            value=f"₹{latest_price:.2f}",
             delta=f"{price_change:.2f} ({price_change_pct:+.2f}%)"
         )
     
@@ -586,11 +593,11 @@ def main():
         market_cap = info.get('marketCap', 0)
         if market_cap:
             if market_cap > 1e12:
-                cap_display = f"${market_cap/1e12:.2f}T"
+                cap_display = f"₹{market_cap/1e12:.2f}T"
             elif market_cap > 1e9:
-                cap_display = f"${market_cap/1e9:.1f}B"
+                cap_display = f"₹{market_cap/1e9:.1f}B"
             else:
-                cap_display = f"${market_cap/1e6:.0f}M"
+                cap_display = f"₹{market_cap/1e6:.0f}M"
             st.metric(label="🏢 Market Cap", value=cap_display)
         else:
             st.metric(label="🏢 Market Cap", value="N/A")
@@ -630,7 +637,7 @@ def main():
                 with pred_col1:
                     st.metric(
                         label="🎯 Next Day Prediction",
-                        value=f"${prediction:.2f}",
+                        value=f"₹{prediction:.2f}",
                         delta=f"{predicted_change:+.2f}%"
                     )
                 
@@ -718,8 +725,8 @@ def main():
                     "Price to Book": f"{info.get('priceToBook', 'N/A'):.2f}" if info.get('priceToBook') else 'N/A',
                     "Dividend Yield": f"{info.get('dividendYield', 0)*100:.2f}%" if info.get('dividendYield') else 'N/A',
                     "Beta": f"{info.get('beta', 'N/A'):.2f}" if info.get('beta') else 'N/A',
-                    "52W High": f"${info.get('fiftyTwoWeekHigh', 'N/A'):.2f}" if info.get('fiftyTwoWeekHigh') else 'N/A',
-                    "52W Low": f"${info.get('fiftyTwoWeekLow', 'N/A'):.2f}" if info.get('fiftyTwoWeekLow') else 'N/A'
+                    "52W High": f"₹{info.get('fiftyTwoWeekHigh', 'N/A'):.2f}" if info.get('fiftyTwoWeekHigh') else 'N/A',
+                    "52W Low": f"₹{info.get('fiftyTwoWeekLow', 'N/A'):.2f}" if info.get('fiftyTwoWeekLow') else 'N/A'
                 }
                 
                 for key, value in financial_info.items():
