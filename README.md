@@ -26,4 +26,5 @@ Python,streamlit,scikit-learn
 
 ##  License
 MIT License. See the LICENSE file.
-4. 
+![Dashboard](screenshots/dashboard.png)
+                                                                        
