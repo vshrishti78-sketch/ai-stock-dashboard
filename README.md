@@ -18,7 +18,7 @@ I am a B.tech CSE student.I choose this project to learn how a real world python
  
 
 ##  Tech Used
-Python,streamlit,scikit-learn
+Python, Streamlit, scikit-learn
 
 ##  How to run
 1. Install requirement: 'pip install -r requirements.txt'
