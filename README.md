@@ -21,8 +21,8 @@ I am a B.tech CSE student.I choose this project to learn how a real world python
 Python,streamlit,scikit-learn
 
 ##  How to run
-1. Install requirement: 'pip install _r requirement.txt'
-2. Run the app: 'Streamlit run Stock_dashboard.py'
+1. Install requirement: 'pip install -r requirements.txt'
+2. Run the app: 'streamlit run stock_dashboard.py'
 
 ##  License
 MIT License. See the LICENSE file.
